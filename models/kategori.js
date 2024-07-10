@@ -17,13 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       namaKategori: {
         type: DataTypes.STRING,
         validate: {
-          allowNull: false,
+          notEmpty: true,
           len: [5, 20],
         },
       },
       keterangan: {
         type: DataTypes.STRING,
         validate: {
+          notEmpty: true,
           len: [5, 100],
         },
       },

@@ -18,20 +18,20 @@ module.exports = (sequelize, DataTypes) => {
       nomorSurat: {
         type: DataTypes.STRING,
         validate: {
-          allowNull: false,
+          notEmpty: true,
           len: [5, 35],
         },
       },
       kategori: {
         type: DataTypes.STRING,
         validate: {
-          allowNull: false,
+          notEmpty: true,
         },
       },
       judul: {
         type: DataTypes.STRING,
         validate: {
-          allowNull: false,
+          notEmpty: true,
           len: [5, 100],
         },
       },
