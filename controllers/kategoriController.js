@@ -28,6 +28,22 @@ class Controller {
     }
   }
 
+  static async GetKategoriById(req, res) {
+    const kategoriID = Number(req.params.id);
+
+    try {
+      const category = await Kategori.findByPk(kategoriID);
+      if (category) {
+        res.status(200).json(category);
+      } else {
+        res.status(404).json({ message: "Kategori tidak ditemukan!" });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Terjadi kesalahan saat mengambil data kategori!" });
+    }
+  }
+
   static async UpdateKategori(req, res) {
     const kategoriID = Number(req.params.id);
     const body = req.body;
@@ -42,7 +58,14 @@ class Controller {
           },
         }
       );
-      res.status(200).json({ message: "Kategori berhasil diedit!" });
+      // res.status(200).json({ message: "Kategori berhasil diedit!" });
+
+      if (editedCategory) {
+        const updatedCategory = await Kategori.findByPk(kategoriID);
+        res.status(200).json({ message: "Kategori berhasil diedit!", data: updatedCategory });
+      } else {
+        res.status(404).json({ message: "Kategori tidak ditemukan!" });
+      }
     } catch (error) {
       res.status(500).json({ message: "Kategori gagal diedit!" });
       console.log(error);
