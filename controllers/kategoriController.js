@@ -1,6 +1,6 @@
 const { Kategori } = require("../models");
 
-class Controller {
+class KategoriController {
   static async CreateKategori(req, res) {
     const body = req.body;
     const { namaKategori, keterangan } = body;
@@ -94,4 +94,4 @@ class Controller {
   }
 }
 
-module.exports = Controller;
+module.exports = KategoriController;

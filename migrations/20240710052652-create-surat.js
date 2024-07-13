@@ -23,7 +23,7 @@ module.exports = {
       },
       fileDokumen: {
         allowNull: false,
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       kategoriId: {
         type: Sequelize.INTEGER,

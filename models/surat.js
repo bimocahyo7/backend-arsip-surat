@@ -36,10 +36,8 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       fileDokumen: {
-        type: DataTypes.BLOB,
-        validate: {
-          allowNull: false,
-        },
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
