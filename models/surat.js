@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: true,
-          len: [5, 35],
+          len: [5, 70],
         },
       },
       kategori: {
