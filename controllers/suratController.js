@@ -1,6 +1,8 @@
 const { Surat, Kategori } = require("../models");
-const multer = require("multer");
 const path = require("path");
+const fs = require("fs").promises;
+
+const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -95,6 +97,42 @@ class SuratController {
     } catch (error) {
       console.error(`Error menghapus surat! ${error}`);
       res.status(500).json({ message: "Terjadi kesalahan saat menghapus surat!" });
+    }
+  }
+
+  static async updateFileDokumen(req, res) {
+    const { id } = req.params;
+    const fileDokumen = req.file;
+
+    try {
+      const surat = await Surat.findByPk(id);
+      if (!surat) {
+        return res.status(404).json({ message: "Surat tidak ditemukan!" });
+      }
+
+      if (fileDokumen) {
+        // Hapus file dokumen lama jik ada
+        const oldFileLocation = path.join(__dirname, "../uploads", surat.fileDokumen);
+        try {
+          await fs.access(oldFileLocation); // Cek file
+          await fs.unlink(oldFileLocation); // Hapus file
+        } catch (error) {
+          console.error(`Error accessing or deleting old file: ${error}`);
+        }
+
+        // Update fileDokumen dengan nama filename
+        surat.fileDokumen = fileDokumen.filename;
+
+        // Simpan perubahan
+        await surat.save();
+
+        return res.status(200).json({ message: "File dokumen surat berhasil diperbarui!", data: surat.toJSON() });
+      }
+
+      return res.status(400).json({ message: "File dokumen baru harus diunggah!" });
+    } catch (error) {
+      console.error(`Error updating file dokumen surat! ${error}`);
+      return res.status(500).json({ message: "Terjadi kesalahan saat memperbarui file dokumen surat!" });
     }
   }
 }
