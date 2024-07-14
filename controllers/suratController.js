@@ -54,6 +54,7 @@ class SuratController {
       }
 
       const fileLocation = path.join(__dirname, "../uploads", surat.fileDokumen);
+      res.setHeader("Content-Type", "application/pdf");
       res.download(fileLocation, surat.fileDokumen);
     } catch (error) {
       console.error(`Error mengunduh surat! ${error}`);
@@ -100,8 +101,9 @@ class SuratController {
     }
   }
 
-  static async updateFileDokumen(req, res) {
+  static async updateSurat(req, res) {
     const { id } = req.params;
+    const { nomorSurat, kategori, judul } = req.body;
     const fileDokumen = req.file;
 
     try {
@@ -110,8 +112,25 @@ class SuratController {
         return res.status(404).json({ message: "Surat tidak ditemukan!" });
       }
 
+      if (kategori) {
+        const kategoriRecord = await Kategori.findOne({ where: { namaKategori: kategori } });
+        if (!kategoriRecord) {
+          return res.status(400).json({ message: "Kategori tidak ditemukan!" });
+        }
+        surat.kategoriId = kategoriRecord.id;
+        surat.kategori = kategoriRecord.namaKategori;
+      }
+
+      if (nomorSurat) {
+        surat.nomorSurat = nomorSurat;
+      }
+
+      if (judul) {
+        surat.judul = judul;
+      }
+
       if (fileDokumen) {
-        // Hapus file dokumen lama jik ada
+        // Hapus file dokumen lama jika ada
         const oldFileLocation = path.join(__dirname, "../uploads", surat.fileDokumen);
         try {
           await fs.access(oldFileLocation); // Cek file
@@ -122,17 +141,15 @@ class SuratController {
 
         // Update fileDokumen dengan nama filename
         surat.fileDokumen = fileDokumen.filename;
-
-        // Simpan perubahan
-        await surat.save();
-
-        return res.status(200).json({ message: "File dokumen surat berhasil diperbarui!", data: surat.toJSON() });
       }
 
-      return res.status(400).json({ message: "File dokumen baru harus diunggah!" });
+      // Simpan perubahan
+      await surat.save();
+
+      return res.status(200).json({ message: "Surat berhasil diperbarui!", data: surat.toJSON() });
     } catch (error) {
-      console.error(`Error updating file dokumen surat! ${error}`);
-      return res.status(500).json({ message: "Terjadi kesalahan saat memperbarui file dokumen surat!" });
+      console.error(`Error memperbarui surat! ${error}`);
+      return res.status(500).json({ message: "Terjadi kesalahan saat memperbarui surat!" });
     }
   }
 }

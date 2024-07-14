@@ -7,9 +7,9 @@ router.get("/", SuratController.getAllSurat);
 router.get("/:id", SuratController.getSuratDetailByID);
 router.delete("/:id", SuratController.deleteSurat);
 
+// Update Surat
+router.put("/:id", upload.single("fileDokumen"), SuratController.updateSurat);
 // Download File
 router.get("/download/:id", SuratController.downloadSurat);
-// Update file dokumen surat
-router.put("/update-file/:id", upload.single("fileDokumen"), SuratController.updateFileDokumen);
 
 module.exports = router;
