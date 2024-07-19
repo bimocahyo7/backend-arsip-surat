@@ -93,6 +93,16 @@ class SuratController {
       if (!surat) {
         return res.status(404).json({ message: "Surat tidak ditemukan!" });
       }
+
+      // Hapus file dokumen dari folder uploads
+      const fileLocation = path.join(__dirname, "../uploads", surat.fileDokumen);
+      try {
+        await fs.access(fileLocation); // Cek file
+        await fs.unlink(fileLocation); // Hapus file
+      } catch (error) {
+        console.error(`Error menghapus surat pada direktori: ${error}`);
+      }
+
       await surat.destroy();
       res.status(200).json({ message: "Surat berhasil dihapus!" });
     } catch (error) {
