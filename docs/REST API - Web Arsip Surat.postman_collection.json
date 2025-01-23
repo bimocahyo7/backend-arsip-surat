@@ -1,0 +1,1193 @@
+{
+	"info": {
+		"_postman_id": "546cb970-1509-474b-b6cd-92b9478e9d3f",
+		"name": "REST API: Web Arsip Surat",
+		"description": "## 🚀 Panduan Testing API Proyek Pengarsipan Surat Sertikom Polinema (2024)\n\nAPI ini terdiri dari fitur berikut:\n\n### **Kategori**\n\n| **Fitur** | Keterangan |\n| --- | --- |\n| **Get All Kategori** | Mengambil semua data kategori. |\n| **Get Kategori by ID** | Mengambil data kategori berdasarkan ID. |\n| **Post Data Kategori** | Menambahkan data kategori baru. |\n| **Update Data Kategori** | Memperbarui data kategori yang ada. |\n| **Delete Data Kategori** | Menghapus data kategori berdasarkan ID. |\n\n### **Surat**\n\n| **Fitur** | **Keterangan** |\n| --- | --- |\n| **Get All Data Surat** | Mengambil semua data surat. |\n| **Download PDF Surat by ID** | Mengunduh file PDF surat berdasarkan ID. |\n| **Get Data Surat by ID** | Mengambil data surat berdasarkan ID. |\n| **Update Surat** | Memperbarui data surat. |\n| **Delete Surat** | Menghapus surat berdasarkan ID. |\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n      \"namaKategori\": \"Nama kategori surat\",\n      \"keterangan\": \"Deskripsi kategori surat\"\n}\n\n ```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30194791"
+	},
+	"item": [
+		{
+			"name": "Kategori",
+			"item": [
+				{
+					"name": "Get all data Kategori",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/kategori",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get all data Kategori",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/kategori",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "865"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"361-GPumc8Igmp91BJPF700lQ99/EN4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:04:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"namaKategori\": \"Pengumuman\",\n        \"keterangan\": \"Surat-surat yang terkait dengan pengumuman\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"namaKategori\": \"Undangan\",\n        \"keterangan\": \"Undangan rapat, koordinasi, dan sebagainya\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 3,\n        \"namaKategori\": \"Nota Dinas\",\n        \"keterangan\": \"Dokumen internal untuk koordinasi dan informasi resmi\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 4,\n        \"namaKategori\": \"Pemberitahuan\",\n        \"keterangan\": \"Surat yang bersifat pemberitahuan\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 5,\n        \"namaKategori\": \"Laporan\",\n        \"keterangan\": \"Dokumen laporan kegiatan atau hasil kerja\",\n        \"createdAt\": \"2025-01-23T15:03:40.000Z\",\n        \"updatedAt\": \"2025-01-23T15:03:40.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get data Kategori by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/kategori/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data Kategori by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/kategori/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ac-+BHDaEpjWtZ1UrMj0dfXaZMdJBk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 14:58:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"namaKategori\": \"Pengumuman\",\n    \"keterangan\": \"Surat-surat yang terkait dengan pengumuman\",\n    \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n    \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post data Kategori",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"namaKategori\": \"Pengumuman1\",\n    \"keterangan\": \"Kategori ini digunakan untuk surat yang bersifat pengumuman\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/kategori",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data Kategori",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"namaKategori\": \"Laporan\",\n    \"keterangan\": \"Dokumen laporan kegiatan atau hasil kerja\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/kategori",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-sKOzngWepz9R/Pwkbws1uGtCX9o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:03:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Kategori berhasil ditambahkan!\",\n    \"data\": {\n        \"id\": 5,\n        \"namaKategori\": \"Laporan\",\n        \"keterangan\": \"Dokumen laporan kegiatan atau hasil kerja\",\n        \"updatedAt\": \"2025-01-23T15:03:40.274Z\",\n        \"createdAt\": \"2025-01-23T15:03:40.274Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data Kategori",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"namaKategori\": \"Pengumuman EDIT\",\n    \"keterangan\": \"Kategori ini digunakan untuk surat yang bersifat pengumuman EDIT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/kategori/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update data Kategori",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"namaKategori\": \"Pengumuman EDIT\",\n    \"keterangan\": \"Kategori ini digunakan untuk surat yang bersifat pengumuman EDIT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/kategori/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-EFW2NFjcLV/L+BiMS4/SZzauzTo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:04:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Kategori berhasil diedit!\",\n    \"data\": {\n        \"id\": 5,\n        \"namaKategori\": \"Pengumuman EDIT\",\n        \"keterangan\": \"Kategori ini digunakan untuk surat yang bersifat pengumuman EDIT\",\n        \"createdAt\": \"2025-01-23T15:03:40.000Z\",\n        \"updatedAt\": \"2025-01-23T15:04:39.000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data Kategori",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:4000/kategori/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data Kategori",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:4000/kategori/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ire91onwit806HLAB2pX8qA2YqY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:04:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Kategori berhasil dihapus! ID: 5\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Surat",
+			"item": [
+				{
+					"name": "Get all data Surat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/kategori",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get all data Surat",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/kategori",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "696"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b8-vKbH4QKO/I2kcfQH+QG5WX6QV6o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 14:59:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"namaKategori\": \"Pengumuman\",\n        \"keterangan\": \"Surat-surat yang terkait dengan pengumuman\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"namaKategori\": \"Undangan\",\n        \"keterangan\": \"Undangan rapat, koordinasi, dan sebagainya\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 3,\n        \"namaKategori\": \"Nota Dinas\",\n        \"keterangan\": \"Dokumen internal untuk koordinasi dan informasi resmi\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    },\n    {\n        \"id\": 4,\n        \"namaKategori\": \"Pemberitahuan\",\n        \"keterangan\": \"Surat yang bersifat pemberitahuan\",\n        \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n        \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Download PDF Surat by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/surat/download/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surat",
+								"download",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get data Surat by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/kategori/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data Surat by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/kategori/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "170"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"aa-qcrHDkjkcOWO4A/l3FzQo8k13RQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:01:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"namaKategori\": \"Undangan\",\n    \"keterangan\": \"Undangan rapat, koordinasi, dan sebagainya\",\n    \"createdAt\": \"2024-12-20T19:07:27.000Z\",\n    \"updatedAt\": \"2024-12-20T19:07:27.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post data Surat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nomorSurat",
+									"value": "Tes526262",
+									"type": "text"
+								},
+								{
+									"key": "kategori",
+									"value": "Pengumuman",
+									"type": "text"
+								},
+								{
+									"key": "judul",
+									"value": "hhehehehhefff hhdhdh hhdhdhhd hdhdhdh hdhdhhd hdhdhhd hdhdhd hdhdhdh hdhdh",
+									"type": "text"
+								},
+								{
+									"key": "fileDokumen",
+									"type": "file",
+									"src": "postman-cloud:///1ef40552-11ef-4710-8b81-5c9cf5cec2a7"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/surat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surat"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data Surat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nomorSurat",
+											"value": "001/POLINEMA/01/2025",
+											"type": "text"
+										},
+										{
+											"key": "kategori",
+											"value": "Pengumuman",
+											"type": "text"
+										},
+										{
+											"key": "judul",
+											"value": "Ujian Kompetensi Polinema (BNSP)",
+											"type": "text"
+										},
+										{
+											"key": "fileDokumen",
+											"type": "file",
+											"src": "postman-cloud:///1ef41ae9-0b71-4fd0-a77e-f7a665bd2a96"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4000/surat",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"surat"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "307"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"133-msNtWBC0Rjcc4PeD9HQnv+YWgKM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:33:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Surat berhasil ditambahkan!\",\n    \"data\": {\n        \"id\": 3,\n        \"nomorSurat\": \"001/POLINEMA/01/2025\",\n        \"kategori\": \"Pengumuman\",\n        \"kategoriId\": 1,\n        \"judul\": \"Ujian Kompetensi Polinema (BNSP)\",\n        \"fileDokumen\": \"1737646426556-pdf-open-parameters.pdf\",\n        \"updatedAt\": \"2025-01-23T15:33:46.568Z\",\n        \"createdAt\": \"2025-01-23T15:33:46.568Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data Surat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fileDokumen",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/Documents/pdf-open-parameters.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/surat/update-file/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surat",
+								"update-file",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete data Surat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/kategori/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"kategori",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data Surat",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/kategori/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"kategori",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-tHMB2Yy+SWUzMD8y0oMCUInlCOs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jan 2025 15:35:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Kategori berhasil dihapus! ID: 3\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
